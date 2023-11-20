@@ -31,7 +31,7 @@ namespace Log_In
             label8.Text = "Last Name: " + textBox2.Text;
             label9.Text = "Email: " + textBox3.Text;
             label10.Text = "Password: " + GetHiddenPass(textBox4.Text);
-            label12.Text = "Usertype : " + (comboBox1.Text);
+
         }
 
         private string GetHiddenPass(string password)
@@ -46,37 +46,14 @@ namespace Log_In
             face.Save_IMAGE(textBox2.Text);
             face.Save_IMAGE(textBox3.Text);
             face.Save_IMAGE(textBox4.Text);
-            face.Save_IMAGE(comboBox1.Text);
             MessageBox.Show("Save Successfully!");
         }
 
         private void adminbtn_Click(object sender, EventArgs e)
         {
-            string Fname = textBox1.Text;
-            string Lname = textBox2.Text;
-            string Email = textBox3.Text;
-            string Pword = textBox4.Text;
-
-            if (comboBox1.SelectedItem != null)
-            {
-                if (int.TryParse(comboBox1.SelectedValue.ToString(), out int Usertype))
-                {
-                    // Convert the image from PictureBox to byte array
-                    ImageConverter converter = new ImageConverter();
-                    byte[] PhotoBytes = (byte[])converter.ConvertTo(pictureBox2.Image, typeof(byte[]));
-
-                    try
-                    {
-                        // Assuming db is an instance of your database access class
-                        db.sp_save(Fname, Lname, Email, Pword, PhotoBytes, Usertype);
-                        MessageBox.Show("Successfully Saved!", "Save");
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error");
-                    }
-                }
-            }
+                MessageBox.Show("Successfully Saved!", "Save");
+                    
+            
         }
 
 
