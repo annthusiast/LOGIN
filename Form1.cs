@@ -40,14 +40,30 @@ namespace Log_In
             return new string('*', password.Length);
         }
 
-        private void saveimg_Click(object sender, EventArgs e)
+       private void saveimg_Click(object sender, EventArgs e)
         {
-            face.Save_IMAGE(textBox1.Text);
-            face.Save_IMAGE(textBox2.Text);
-            face.Save_IMAGE(textBox3.Text);
-            face.Save_IMAGE(textBox4.Text);
-            MessageBox.Show("Save Successfully!");
+            if (ValidateInputs())
+            {
+                face.Save_IMAGE(textBox1.Text);
+                face.Save_IMAGE(textBox2.Text);
+                face.Save_IMAGE(textBox3.Text);
+                face.Save_IMAGE(textBox4.Text);
+                MessageBox.Show("Save Successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Please fill out all the information to save.");
+            }
         }
+
+        private bool ValidateInputs()
+        {
+            return !string.IsNullOrWhiteSpace(textBox1.Text)
+                && !string.IsNullOrWhiteSpace(textBox2.Text)
+                && !string.IsNullOrWhiteSpace(textBox3.Text)
+                && !string.IsNullOrWhiteSpace(textBox4.Text);
+        }
+
 
         private void adminbtn_Click(object sender, EventArgs e)
         {
